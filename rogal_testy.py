@@ -5,8 +5,8 @@ import platform
 import items
 #import scisors2
 try:
-	from msvcrt import getch #For windows
-except ImportError: #For linux and maybe mac...
+	from msvcrt import getch 
+except ImportError:
 
 	def getch():
 
@@ -56,71 +56,71 @@ stuff  = {'wall'  :  "#",
 potion = {'hp': 10,'exp': 0,'def': 1,'atc': 1,'lvl': 1}
 print(potion)
 	
-GOWNO_KTORE_ZEBRALEM = []
-inna_lista = []
-pos = [] # 0 is X,1 is Y
+invwntory = []
+otherlist = []
+pos = [] 
 
 def zbieranie():
 	for key in room:
 		print(room[key])# ta linijka wyswietla duza mape XD
 
-	if pos == [20, 2] and 'melon' in inna_lista:
+	if pos == [20, 2] and 'melon' in otherlist:
 		print()
-	elif pos == [20, 2] and 'melon' not in inna_lista:
-		inna_lista.append('melon')
-		GOWNO_KTORE_ZEBRALEM.append('hp')
-		GOWNO_KTORE_ZEBRALEM.append('hp')
-		add_to_inventory(potion, GOWNO_KTORE_ZEBRALEM)
+	elif pos == [20, 2] and 'melon' not in otherlist:
+		otherlist.append('melon')
+		invwntory.append('hp')
+		invwntory.append('hp')
+		add_to_inventory(potion, invwntory)
 		print("dodoano hp")
-		GOWNO_KTORE_ZEBRALEM.clear()
+		invwntory.clear()
 
-	if pos == [15, 8] and 'sliwka' in inna_lista:
+	if pos == [15, 8] and 'sliwka' in otherlist:
 		print()
-	elif pos == [15, 8] and 'sliwka' not in inna_lista:
-		inna_lista.append('sliwka')
-		GOWNO_KTORE_ZEBRALEM.append('hp')
-		add_to_inventory(potion, GOWNO_KTORE_ZEBRALEM)
+	elif pos == [15, 8] and 'sliwka' not in otherlist:
+		otherlist.append('sliwka')
+		invwntory.append('hp')
+		add_to_inventory(potion, invwntory)
 		print("dodoano hp")
-		GOWNO_KTORE_ZEBRALEM.pop()
+		invwntory.pop()
 
-	if pos == [6, 20] and 'rekawice robocze' in inna_lista:
+	if pos == [6, 20] and 'rekawice robocze' in otherlist:
 		print()
-	elif pos == [6, 20] and 'rekawice robocze' not in inna_lista:
-		inna_lista.append('rekawice robocze')
-		GOWNO_KTORE_ZEBRALEM.append('def')
-		add_to_inventory(potion, GOWNO_KTORE_ZEBRALEM)
+	elif pos == [6, 20] and 'rekawice robocze' not in otherlist:
+		otherlist.append('rekawice robocze')
+		invwntory.append('def')
+		add_to_inventory(potion, invwntory)
 		print("dodoano def")
-		GOWNO_KTORE_ZEBRALEM.pop()
+		invwntory.pop()
 
-	if pos == [7, 11] and 'zbroja wielkiego kutanga' in inna_lista:
+	if pos == [7, 11] and 'zbroja wielkiego kutanga' in otherlist:
 		print()
-	elif pos == [7, 11] and 'zbroja wielkiego kutanga' not in inna_lista:
-		inna_lista.append('zbroja wielkiego kutanga')
-		GOWNO_KTORE_ZEBRALEM.append('def')
-		GOWNO_KTORE_ZEBRALEM.append('def')
-		add_to_inventory(potion, GOWNO_KTORE_ZEBRALEM)
+	elif pos == [7, 11] and 'zbroja wielkiego kutanga' not in otherlist:
+		otherlist.append('zbroja wielkiego kutanga')
+		invwntory.append('def')
+		invwntory.append('def')
+		add_to_inventory(potion, invwntory)
 		print("dodoano def")
-		GOWNO_KTORE_ZEBRALEM.clear()
+		invwntory.clear()
 
-	if pos == [20, 16] and 'miecz walusa' in inna_lista:
+	if pos == [20, 16] and 'miecz walusa' in otherlist:
 		print()
-	elif pos == [20, 16] and 'miecz walusa' not in inna_lista:
-		inna_lista.append('miecz walusa')
-		GOWNO_KTORE_ZEBRALEM.append('atc')
-		GOWNO_KTORE_ZEBRALEM.append('atc')
-		add_to_inventory(potion, GOWNO_KTORE_ZEBRALEM)
+	elif pos == [20, 16] and 'miecz walusa' not in otherlist:
+		otherlist.append('miecz walusa')
+		invwntory.append('atc')
+		invwntory.append('atc')
+		add_to_inventory(potion, invwntory)
 		print("dodoano atc")
-		GOWNO_KTORE_ZEBRALEM.clear()
+		invwntory.clear()
 
 
-	if pos == [16, 20] and 'nazgul' in inna_lista:
+	if pos == [16, 20] and 'nazgul' in otherlist:
 		print()
-	elif pos == [16, 20] and 'nazgul' not in inna_lista:
-		inna_lista.append('nazgul')
+	elif pos == [16, 20] and 'nazgul' not in otherlist:
+		otherlist.append('nazgul')
 		import scisors2
-		GOWNO_KTORE_ZEBRALEM.append('exp')
-		add_to_inventory(potion, GOWNO_KTORE_ZEBRALEM)
-		GOWNO_KTORE_ZEBRALEM.clear()
+		invwntory.append('exp')
+		add_to_inventory(potion, invwntory)
+		invwntory.clear()
 
 		
 ################################################################################
@@ -174,13 +174,13 @@ def updater():
 	if platform.system() =='Windows':
 		os.system('cls')
 	elif platform.system() == 'Linux':
-		os.system('clear') #For linux.. I don't know what to do about mac :/
+		os.system('clear')
 	gamemap()
 	player_pos()
 	zbieranie()
-	print(GOWNO_KTORE_ZEBRALEM)
+	print(invwntory)
 	print(potion)
-	print(inna_lista)
+	print(otherlist)
  
 
 def up(ditcioary,inst_replace,inst_player):
