@@ -22,12 +22,31 @@ import random
 #
 
 
-def clothes():
-    """
-    List of clotches available in game. Tuple schemat:(Item name, How many DEFF add)
-    Return: Random clotches from list.
-    """
-    clothes_list = ["brass helmet", "rainbow shield",
-                    "doran shield", "plate armor",
-                    "steel boots", "golden legs"]
-    return clothes_list
+#def clothes():
+#    """
+#    List of clotches available in game. Tuple schemat:(Item name, How many DEFF add)
+#    Return: Random clotches from list.
+#    """
+#    clothes_list = ["brass helmet", "rainbow shield",
+#                    "doran shield", "plate armor",
+#                    "steel boots", "golden legs"]
+#    return clothes_list
+#
+
+
+levels = []
+string = ""
+
+with open("map.txt", 'r') as f:
+    for line in f:
+
+        for char in line:
+            string = string + char
+
+        string = string[:-1]
+        levels.append([string])
+        string = ""
+print(levels)
+
+numerationkeys = list(range(1, len(levels)))
+# for lev in levels:
