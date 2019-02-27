@@ -3,6 +3,7 @@ import random
 import platform
 import items
 import scisors2
+import level1
 
 try:
 	from msvcrt import getch 
@@ -173,7 +174,7 @@ def updater():
 	print(stats)
 	print(otherlist)
 
-""" Shove it to seperate file
+# Shove it to seperate file
 def up(ditcioary,inst_replace,inst_player):
 	(ditcioary[position[0]]).pop(position[1])
 	(ditcioary[position[0]]).insert(position[1],inst_replace)
@@ -202,7 +203,6 @@ def right(ditcioary,inst_replace,inst_player):
 	(ditcioary[position[0]]).insert(position[1]+1,inst_player)
 
 
-
 def controls():
 	while True:
 		pressedkey = getch()
@@ -226,14 +226,13 @@ def controls():
 				right(room,actors['empty'], actors['player'])
 				updater()
 				print(position)
-"""
+
 
 ##############################################################################################
 ##############################################################################################
-
 
 def print_character_statistics(char_stats):
-    string = "hp:{:}\tdef:{:}\tatc:{:}\texp:{:}\tlvl:{:}"
+    string = "hp:{:}\texp:{:}\tdef:{:}\tatc:{:}\tlvl:{:}"
     print(string.format(*char_stats.values()))
 
 def add_character_stats():
@@ -253,11 +252,16 @@ def add_character_stats():
 		print_character_statistics(stats)
 
 
-def main():
-    add_character_stats()
-    get_player_position()
-    controls()
-
-
-if __name__ == "__main__":
-    main()
+#def main():
+#    add_character_stats()
+#    get_player_position()
+#    controls()
+#
+#
+#if __name__ == "__main__":
+  
+  
+#main()
+add_character_stats()
+get_player_position()
+controls()
