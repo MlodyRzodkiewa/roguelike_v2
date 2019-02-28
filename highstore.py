@@ -10,7 +10,7 @@ def game_time(start_time):
 
 
 def get_user_score(char_stats, play_time):
-    final_score = str(int(char_stats["EXP"] * 3 * int(play_time)))
+    final_score = str(int(char_stats["exp"] * 3 * int(play_time)))
 
     return final_score
 
@@ -18,7 +18,7 @@ def get_user_score(char_stats, play_time):
 def print_score(char_stats, play_time):
     play_time = time.strftime('%H:%M:%S', time.gmtime(play_time))
     string = "\n\nYou played for {} and gainded {} EXP points. Your score is {}\n\n"
-    formating = [play_time, char_stats["EXP"] + 10 * (char_stats["LVL"] - 1), final_score]
+    formating = [play_time, char_stats["exp"] + 10 * (char_stats["lvl"] - 1), get_user_score(char_stats, play_time)]
     print(string.format(*formating))
 
 

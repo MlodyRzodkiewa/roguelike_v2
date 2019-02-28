@@ -4,6 +4,7 @@ import platform
 import items
 import scisors2
 import maps
+import hot_cold_game
 
 try:
 	from msvcrt import getch 
@@ -98,6 +99,24 @@ def pick_up():
 		inventory.append('exp')
 		add_to_inventory(stats, inventory)
 		inventory.clear()
+		
+	if position == [6, 9] and 'Skin of Warg' in otherlist:
+		print()
+	elif position == [6, 9] and 'Skin of Warg' not in otherlist:
+		otherlist.append('Skin of Warg')
+		scisors2.rock()
+		inventory.append('exp')
+		add_to_inventory(stats, inventory)
+		inventory.clear()
+
+	if position == [21, 21] and 'Konrad Krzysztofiak' in otherlist:
+		print()
+	elif position == [21, 21] and 'Konrad Krzysztofiak' not in otherlist:
+		otherlist.append('Konrad Krzysztofiak')
+		hot_cold_game.hotcold()		
+		inventory.append('exp')
+		add_to_inventory(stats, inventory)
+		inventory.clear()
 
 		
 ################################################################################
@@ -174,7 +193,8 @@ def right(ditcioary,inst_replace,inst_player):
 
 def controls():
 	while True:
-		maps.map_changer()
+		if "Konrad Krzysztofiak" in otherlist:
+			break
 		pressedkey = getch()
 		if pressedkey is 'w' or pressedkey is 'W':
 			if maps.room[position[0]-1][position[1]] is not actors['wall']:

@@ -22,7 +22,7 @@ import random
 #
 
 
-#def clothes():
+# def clothes():
 #    """
 #    List of clotches available in game. Tuple schemat:(Item name, How many DEFF add)
 #    Return: Random clotches from list.
