@@ -3,9 +3,10 @@ import rogal
 import highstore
 import time
 
+
 def main_menu():
 
-    file = open("/home/mateusz/codecool/roguelike_v2/ascii_art/castle1.txt",'r') 
+    file = open("/home/szymon/codecool/PYTHON/roguelike_v2/ascii_art/castle1.txt", 'r') 
     print(file.read())
 
     print("""
@@ -23,22 +24,22 @@ def main_menu():
         start = time.time()
         rogal.controls()
         end = time.time()
-        game_time = end - start
+        game_time = int(end) - int(start)
         highstore.print_score(rogal.stats, game_time)
 
     if choice == '2':
         pass
 
     if choice == '3':
-        file = open("/home/mateusz/codecool/roguelike_v2/howtoplay.txt",'r')
+        file = open("/home/szymon/codecool/PYTHON/roguelike_v2/howtoplay.txt", 'r')
         print(file.read())
 
         back = input("press anything to go back to main menu")
-        if len(back)>0:
+        if len(back) > 0:
             main_menu()
 
     if choice == '4':
-        file = open("/home/mateusz/codecool/roguelike_v2/ascii_art/Authors.txt", 'r')
+        file = open("/home/szymon/codecool/PYTHON/roguelike_v2/ascii_art/Authors.txt", 'r')
         print(file.read())
         file.close()
         back = input("press anything to go back to main menu")

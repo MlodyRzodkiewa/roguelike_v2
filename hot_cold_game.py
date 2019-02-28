@@ -11,7 +11,7 @@ def hotcold():
             answer = int(input("type a number:"))
             listt.append(answer)
             if answer == numbers:
-                file = open("/home/mateusz/codecool/roguelike_v2/ascii_art/congrats.txt", 'r')
+                file = open("/home/szymon/codecool/PYTHON/roguelike_v2/ascii_art/congrats.txt", 'r')
                 print(file.read())
                 file.close()
             elif answer < numbers:

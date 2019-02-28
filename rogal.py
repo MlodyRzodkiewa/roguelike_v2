@@ -5,6 +5,7 @@ import items
 import scisors2
 import maps
 import hot_cold_game
+import time
 
 try:
 	from msvcrt import getch 
@@ -113,6 +114,9 @@ def pick_up():
 		print()
 	elif position == [21, 21] and 'Konrad Krzysztofiak' not in otherlist:
 		otherlist.append('Konrad Krzysztofiak')
+		os.system("clear")
+		file = open("/home/szymon/codecool/PYTHON/roguelike_v2/ascii_art/finalbos.txt", 'r') 
+		print(file.read())
 		hot_cold_game.hotcold()		
 		inventory.append('exp')
 		add_to_inventory(stats, inventory)
@@ -194,7 +198,7 @@ def right(ditcioary,inst_replace,inst_player):
 def controls():
 	while True:
 		if "Konrad Krzysztofiak" in otherlist:
-			break
+			break			
 		pressedkey = getch()
 		if pressedkey is 'w' or pressedkey is 'W':
 			if maps.room[position[0]-1][position[1]] is not actors['wall']:
