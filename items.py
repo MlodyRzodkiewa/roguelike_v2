@@ -33,7 +33,7 @@ import random
 #    return clothes_list
 #
 
-
+'''
 levels = []
 string = ""
 
@@ -50,3 +50,4 @@ print(levels)
 
 numerationkeys = list(range(1, len(levels)))
 # for lev in levels:
+'''

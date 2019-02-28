@@ -3,7 +3,7 @@ import random
 import platform
 import items
 import scisors2
-import level1
+import maps
 
 try:
 	from msvcrt import getch 
@@ -50,14 +50,12 @@ room = {1:['#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','
 		18:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','#'],# |
 		19:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','#'],# |
 		20:['#','.','$','.','.','.','.','.','.','.','.','.','.','.','.','#','A','.','.','.','.','.','.','#'],# |
-		21:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','.','#'],# |
+		21:['#','.','.','.','.','.','.','.','.','.','.','.','.','.','.','#','.','.','.','.','.','.','D','#'],# |
 	    22:['#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#','#']}# |
 		# <--------------------------------------------y------------------------------------------------------->
 actors = {'wall'  :  "#",
 		  'player':  "@",
-		  'empty' :  ".",
-		  'money' :  "$",
-		  'chest' :  "C"}
+		  'empty' :  "."}
 stats = {'hp': 10,'exp': 0,'def': 1,'atc': 1,'lvl': 1}
 
 
@@ -66,8 +64,8 @@ otherlist = []
 position = []
 
 def pick_up():
-#	for key in room:
-#		print(room[key])# ta linijka wyswietla duza mape XD
+#	for key in maps.room:
+#		print(maps.room[key])# ta linijka wyswietla duza mape XD
 
 	if position == [20, 2] and 'melon' in otherlist:
 		print()
@@ -106,31 +104,26 @@ def pick_up():
 		add_to_inventory(stats, inventory)
 		print("added def")
 		inventory.clear()
-	
-#################3
-	# TODO poprwić trza
-	for item in items.clothes():
-		if position == [20, 16] and item in item.clothes() in otherlist:
-			print()
-
-		elif position == [20, 16] and items.clothes() not in otherlist:
-			otherlist.append(items.clothes()[random.randint(0, len(items.clothes())-1)])
-			inventory.append('atc')
-			inventory.append('atc')
-			add_to_inventory(stats, inventory)
-			print("added atc")
-			inventory.clear()				
-#################
-
-	if position == [11, 16] and 'Nazgûl' in otherlist:
+		
+	if position == [20, 16] and 'Greater kahoot armor' in otherlist:
 		print()
-	elif position == [11, 16] and 'Nazgûl' not in otherlist:
-		otherlist.append('Nazgûl')
+	elif position == [20, 16] and 'Greater kahoot armor' not in otherlist:
+		otherlist.append('Greater kahoot armor')
+		inventory.append('def')
+		inventory.append('def')
+		add_to_inventory(stats, inventory)
+		print("added def")
+		inventory.clear()			
+
+	if position == [11, 16] and 'Robes of Nazgûl' in otherlist:
+		print()
+	elif position == [11, 16] and 'Robes of Nazgûl' not in otherlist:
+		otherlist.append('Robes of Nazgûl')
 		scisors2.rock()
 		inventory.append('exp')
 		add_to_inventory(stats, inventory)
 		inventory.clear()
-
+		
 
 ################################################################################
 ################################################################################
@@ -149,14 +142,14 @@ def add_to_inventory(inventory, added_items):
 ##########################################################################################################
 #########################################################################################################
 def gamemap():
-	for i in range(1,len(room)+1):
-		print("".join(room[i]))
+	for i in range(1,len(maps.room)+1):
+		print("".join(maps.room[i]))
 
 def get_player_position():
-	for i in range(1,len(room)+1):
-		if actors['player'] in room[i]:
+	for i in range(1,len(maps.room)+1):
+		if actors['player'] in maps.room[i]:
 			x_axis = i
-			y_axis = room[i].index(actors['player'])
+			y_axis = maps.room[i].index(actors['player'])
 			global position
 			del position[:]
 			position.append(x_axis)
@@ -207,23 +200,23 @@ def controls():
 	while True:
 		pressedkey = getch()
 		if pressedkey is 'w' or pressedkey is 'W':
-			if room[position[0]-1][position[1]] is not actors['wall']:
-				up(room, actors['empty'], actors['player'])
+			if maps.room[position[0]-1][position[1]] is not actors['wall']:
+				up(maps.room, actors['empty'], actors['player'])
 				updater()
 				print(position)
 		elif pressedkey is 's' or pressedkey is 'S':
-			if room[position[0]+1][position[1]] is not actors['wall']:
-				down(room,actors['empty'],actors['player'])
+			if maps.room[position[0]+1][position[1]] is not actors['wall']:
+				down(maps.room,actors['empty'],actors['player'])
 				updater()
 				print(position)
 		elif pressedkey is 'a' or pressedkey is 'A':
-			if room[position[0]][position[1]-1] is not actors['wall']:
-				left(room,actors['empty'], actors['player'])
+			if maps.room[position[0]][position[1]-1] is not actors['wall']:
+				left(maps.room,actors['empty'], actors['player'])
 				updater()
 				print(position)
 		elif pressedkey is 'd' or pressedkey is 'D':
-			if room[position[0]][position[1]+1] is not actors['wall']:
-				right(room,actors['empty'], actors['player'])
+			if maps.room[position[0]][position[1]+1] is not actors['wall']:
+				right(maps.room,actors['empty'], actors['player'])
 				updater()
 				print(position)
 
@@ -252,16 +245,11 @@ def add_character_stats():
 		print_character_statistics(stats)
 
 
-#def main():
-#    add_character_stats()
-#    get_player_position()
-#    controls()
-#
-#
-#if __name__ == "__main__":
-  
-  
-#main()
-add_character_stats()
-get_player_position()
-controls()
+def main():
+    add_character_stats()
+    get_player_position()
+    controls()
+
+
+if __name__ == "__main__":
+	main()
