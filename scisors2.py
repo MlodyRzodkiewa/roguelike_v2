@@ -68,12 +68,14 @@ def rock():
         # mozna dopisac historie ze przeciwnik jest przekonany o swojej nieomylnosci i
         # pojedyncza przegrana sprawia ze traci sens zycia XD
         if how_many.count("W") > how_many.count("L"):
-            print("jestttttttttttttttttttt")
-            # file = open("congrats.txt",'r')
-            # print (file.read())
+            print("YOU WIN")
+            file = open("/home/szymon/codecool/PYTHON/roguelike_v2/ascii_art/congrats.txt", 'r')
+            print(file.read())
+            file.close()
             return True
         else:
-            print("nieeeeeeeeeeeeee")
-            # file = open("lose.txt",'r')
-            # print (file.read())
+            print("YOU LOSE")
+            file = open("/home/szymon/codecool/PYTHON/roguelike_v2/ascii_art/lose.txt", 'r')
+            print(file.read())
+            file.close()
             return False
